@@ -1,10 +1,16 @@
 package invoicemanagementsystem.invoiceservice;
 
-import invoicemanagementsystem.repository.Invoice;
+import invoicemanagementsystem.entities.Invoice;
+import invoicemanagementsystem.entities.Item;
+import invoicemanagementsystem.entities.ItemInfo;
+import invoicemanagementsystem.entities.dto.InvoiceDTO;
+import invoicemanagementsystem.entities.dto.ItemDTO;
 import invoicemanagementsystem.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InvoiceService {
@@ -19,12 +25,33 @@ public class InvoiceService {
         return repository.findAll();
     }
 
-    public Invoice storeInvoice(Invoice invoice){
-        repository.save(invoice);
-        return invoice;
+    public Invoice storeInvoice(InvoiceDTO invoice){
+
+        List<Item> newItem = invoice.getItemList().stream().map(itemDTO -> {
+            Item item = new Item();
+            ItemInfo itemInfo = new ItemInfo();
+            item.setItemName(itemDTO.getItemName());
+            itemInfo.setPrice(itemDTO.getItemInfo().getPrice());
+            itemInfo.setQuantity(itemDTO.getItemInfo().getQuantity());
+            item.setItemInfo(itemInfo);
+            return item;
+        }).collect(Collectors.toList());
+
+        Invoice newInvoice = new Invoice();
+        newInvoice.setName(invoice.getName());
+
+        for (Item item : newItem) {
+            newInvoice.setItem(item);
+        }
+
+        newInvoice.setPriceWithoutVAT(invoice.getPriceWithoutVAT());
+        newInvoice.setPriceWithVAT(invoice.getPriceWithVAT());
+        newInvoice.setReceiverName(invoice.getReceiverName());
+        return repository.save(newInvoice);
     }
 
     public Invoice getInvoiceById(Long id){
+        System.out.println(repository.findById(id).toString());
         return repository.findById(id).orElse(null);
     }
 

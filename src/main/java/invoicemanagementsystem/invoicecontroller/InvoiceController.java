@@ -1,7 +1,8 @@
 package invoicemanagementsystem.invoicecontroller;
 
+import invoicemanagementsystem.entities.dto.InvoiceDTO;
 import invoicemanagementsystem.invoiceservice.InvoiceService;
-import invoicemanagementsystem.repository.Invoice;
+import invoicemanagementsystem.entities.Invoice;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,9 @@ public class InvoiceController {
 
     //Save an invoice
     @PostMapping("/invoice")
-    Invoice saveInvoice(@RequestBody Invoice invoice) { return service.storeInvoice(invoice);}
+    Invoice saveInvoice(@RequestBody InvoiceDTO invoice) {
+        return service.storeInvoice(invoice);
+    }
 
     //Show invoice by Id
     @GetMapping("/invoice/{id}")
