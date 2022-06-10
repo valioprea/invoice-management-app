@@ -40,4 +40,10 @@ Additionally, it's possible to print them out to PDF.
         "priceWithoutVAT": 250
 }
 
+# Technologies used
+ - SpringBoot
+ - h2 database
+ - REST API
+ - librePDF
+
 # Have fun!
