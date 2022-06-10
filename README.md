@@ -1,13 +1,13 @@
 ## invoice-management-app
 Java SpringBoot based application that manages invoices through REST API
 
-##What is it about?
+## What is it about?
 
 You can create, view and delete invoices of products of your choice and store them in a database.
 
 Additionally, it's possible to print them out to PDF.
 
-#Routing
+# Routing
 /invoices GET - view all invoices
 /invoice POST - create an invoice & store to dbs
 /invoice/{id} GET - specific invoice by Id
@@ -16,7 +16,7 @@ Additionally, it's possible to print them out to PDF.
 /invoice/{id}/print GET - print to pdf specific invoice
 /invoice/printall GET - print to pdf all invoices
 
-#How does an invoice look like ?
+# How does an invoice look like ?
 {
         "name": "Vali",
         "receiverName": "Dani",
@@ -40,4 +40,4 @@ Additionally, it's possible to print them out to PDF.
         "priceWithoutVAT": 250
 }
 
-#Have fun!
+# Have fun!
