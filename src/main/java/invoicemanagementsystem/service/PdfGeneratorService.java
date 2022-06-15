@@ -1,4 +1,4 @@
-package invoicemanagementsystem.printservice;
+package invoicemanagementsystem.service;
 
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfWriter;

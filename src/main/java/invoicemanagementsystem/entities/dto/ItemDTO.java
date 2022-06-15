@@ -7,13 +7,6 @@ public class ItemDTO {
     private String itemName;
     private ItemInfoDTO itemInfo;
 
-    public ItemDTO(){}
-
-    public ItemDTO(String itemName, ItemInfoDTO itemInfo) {
-        this.itemName = itemName;
-        this.itemInfo = itemInfo;
-    }
-
     public String getItemName() {
         return itemName;
     }

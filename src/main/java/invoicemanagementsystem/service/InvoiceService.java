@@ -1,14 +1,12 @@
-package invoicemanagementsystem.invoiceservice;
+package invoicemanagementsystem.service;
 
 import invoicemanagementsystem.entities.Invoice;
 import invoicemanagementsystem.entities.Item;
 import invoicemanagementsystem.entities.ItemInfo;
 import invoicemanagementsystem.entities.dto.InvoiceDTO;
-import invoicemanagementsystem.entities.dto.ItemDTO;
 import invoicemanagementsystem.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +25,7 @@ public class InvoiceService {
 
     public Invoice storeInvoice(InvoiceDTO invoice){
 
-        List<Item> newItem = invoice.getItemList().stream().map(itemDTO -> {
+        List<Item> newItems = invoice.getItemList().stream().map(itemDTO -> {
             Item item = new Item();
             ItemInfo itemInfo = new ItemInfo();
             item.setItemName(itemDTO.getItemName());
@@ -40,7 +38,7 @@ public class InvoiceService {
         Invoice newInvoice = new Invoice();
         newInvoice.setName(invoice.getName());
 
-        for (Item item : newItem) {
+        for (Item item : newItems) {
             newInvoice.setItem(item);
         }
 
@@ -51,7 +49,6 @@ public class InvoiceService {
     }
 
     public Invoice getInvoiceById(Long id){
-        System.out.println(repository.findById(id).toString());
         return repository.findById(id).orElse(null);
     }
 

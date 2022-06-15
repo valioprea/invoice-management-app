@@ -9,16 +9,6 @@ public class InvoiceDTO {
     private int priceWithVAT;
     private int priceWithoutVAT;
 
-    public InvoiceDTO(){}
-
-    public InvoiceDTO(String name, String receiverName, List<ItemDTO> itemList, int priceWithVAT, int priceWithoutVAT) {
-        this.name = name;
-        this.receiverName = receiverName;
-        this.itemList = itemList;
-        this.priceWithVAT = priceWithVAT;
-        this.priceWithoutVAT = priceWithoutVAT;
-    }
-
     public String getName() {
         return name;
     }

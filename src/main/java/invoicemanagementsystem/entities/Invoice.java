@@ -9,23 +9,18 @@ import java.util.List;
 @Entity
 @Table(name = "invoice")
 public class Invoice {
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private String receiverName;
-    @OneToMany(mappedBy ="invoice", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Item> itemList = new ArrayList<>();
     private int priceWithVAT;
     private int priceWithoutVAT;
 
-    public Invoice(){}
-    public Invoice(Long id, String name, String receiverName, List<Item> itemList, int priceWithVAT, int priceWithoutVAT) {
-        this.id = id;
-        this.name = name;
-        this.receiverName = receiverName;
-        this.itemList = itemList;
-        this.priceWithVAT = priceWithVAT;
-        this.priceWithoutVAT = priceWithoutVAT;
+    public Invoice() {
     }
 
     public Long getId() {
@@ -56,10 +51,12 @@ public class Invoice {
         return itemList;
     }
 
-    public void setItemList(List<Item> itemList) {this.itemList = itemList;}
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
 
     //to attach Items to the invoice's item list
-    public void setItem(Item item){
+    public void setItem(Item item) {
         this.itemList.add(item);
         item.setInvoice(this);
     }

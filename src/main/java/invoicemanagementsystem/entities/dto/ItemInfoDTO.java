@@ -5,13 +5,6 @@ public class ItemInfoDTO {
     private int quantity;
     private int price;
 
-    public ItemInfoDTO(){}
-
-    public ItemInfoDTO(int quantity, int price) {
-        this.quantity = quantity;
-        this.price = price;
-    }
-
     public int getQuantity() {
         return quantity;
     }

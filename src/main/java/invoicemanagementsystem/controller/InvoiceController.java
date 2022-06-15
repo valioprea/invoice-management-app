@@ -1,7 +1,7 @@
-package invoicemanagementsystem.invoicecontroller;
+package invoicemanagementsystem.controller;
 
 import invoicemanagementsystem.entities.dto.InvoiceDTO;
-import invoicemanagementsystem.invoiceservice.InvoiceService;
+import invoicemanagementsystem.service.InvoiceService;
 import invoicemanagementsystem.entities.Invoice;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 public class InvoiceController {
 
-    InvoiceService service;
+    private InvoiceService service;
 
     public InvoiceController(InvoiceService service) {
         this.service = service;

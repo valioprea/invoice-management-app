@@ -1,10 +1,10 @@
-package invoicemanagementsystem.printcontroller;
+package invoicemanagementsystem.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import invoicemanagementsystem.entities.Invoice;
-import invoicemanagementsystem.invoiceservice.InvoiceService;
-import invoicemanagementsystem.printservice.PdfGeneratorService;
+import invoicemanagementsystem.service.InvoiceService;
+import invoicemanagementsystem.service.PdfGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
