@@ -172,7 +172,7 @@ public class Invoice {
                 ", beneficiaryName='" + beneficiaryName + '\'' +
                 ", beneficiaryAdress='" + beneficiaryAdress + '\'' +
                 ", beneficiaryCUI='" + beneficiaryCUI + '\'' +
-                ", itemList=" + itemList +
+//                ", itemList=" + itemList +
                 ", totalPriceNoVAT=" + totalPriceNoVAT +
                 ", totalPriceWithVAT=" + totalPriceWithVAT +
                 '}';

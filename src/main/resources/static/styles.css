@@ -1,0 +1,18 @@
+page {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+}
+
+img {
+  max-width: 300px;
+  height: 100px;
+}

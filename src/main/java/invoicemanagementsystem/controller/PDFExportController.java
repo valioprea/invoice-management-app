@@ -7,6 +7,7 @@ import invoicemanagementsystem.service.InvoiceService;
 import invoicemanagementsystem.service.PdfGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -28,25 +29,33 @@ public class PDFExportController {
         this.pdfService = service;
     }
 
-    @GetMapping("/invoice/{id}/print")
-    public void generatePDF(HttpServletResponse response, @PathVariable Long id) throws IOException {
-        response.setContentType("application/pdf");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=pdf_"+currentDateTime+".pdf";
-        response.setHeader(headerKey, headerValue);
+//    @GetMapping("/invoice/{id}/print")
+//    public void generatePDF(HttpServletResponse response, @PathVariable Long id) throws IOException {
+//        response.setContentType("application/pdf");
+//        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+//        String currentDateTime = dateFormatter.format(new Date());
+//        String headerKey = "Content-Disposition";
+//        String headerValue = "attachment; filename=pdf_"+currentDateTime+".pdf";
+//        response.setHeader(headerKey, headerValue);
+//        Invoice invoice = invoiceService.getInvoiceById(id);
+//        ObjectMapper obj = new ObjectMapper();
+//        try {
+//            String jsonStr = obj.writeValueAsString(invoice);
+//            this.pdfService.export(response, jsonStr);
+//            System.out.println(jsonStr);
+//        } catch(JsonProcessingException e) {
+//            System.out.println(e.getMessage());
+//            response.setStatus(404);
+//        }
+//    }
 
-        Invoice invoice = invoiceService.getInvoiceById(id);
-        ObjectMapper obj = new ObjectMapper();
-        try {
-            String jsonStr = obj.writeValueAsString(invoice);
-            this.pdfService.export(response, jsonStr);
-            System.out.println(jsonStr);
-        } catch(JsonProcessingException e) {
-            System.out.println(e.getMessage());
-            response.setStatus(404);
-        }
+    @GetMapping("/invoice/{id}/print")
+    public String generatePDF(Model model, @PathVariable Long id){
+        model.addAttribute("something", "this is coming from the controller");
+        Invoice myInvoice =  invoiceService.getInvoiceById(id);
+        System.out.println(myInvoice.toString());
+
+        return "invoicePage";
     }
 
     @GetMapping("invoice/printall")
