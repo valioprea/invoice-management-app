@@ -9,78 +9,172 @@ import java.util.List;
 @Entity
 @Table(name = "invoice")
 public class Invoice {
+
+    //Unique generated value of invoice
     @Id
     @GeneratedValue
-    private Long id;
-    private String name;
-    private String receiverName;
+    private Long invoiceId;
+    private String date;
+
+    //PROVIDER INFO
+    private String providerName;
+    private String providerAdress;
+    private String registrationCode;
+    private String socialCapital;
+    private String providerCUI;
+    private String legalForm;
+
+    //BENEFICIARY INFO
+    private String beneficiaryName;
+    private String beneficiaryAdress;
+    private String beneficiaryCUI;
+
+    //The list of purchased items
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Item> itemList = new ArrayList<>();
-    private int priceWithVAT;
-    private int priceWithoutVAT;
 
-    public Invoice() {
+    //Totals, calculated
+    private double totalPriceNoVAT;
+    private double totalPriceWithVAT;
+
+    //Setter Methods
+    public void setInvoiceId(Long invoiceId) {
+        this.invoiceId = invoiceId;
     }
 
-    public Long getId() {
-        return id;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
     }
 
-    public String getName() {
-        return name;
+    public void setProviderAdress(String providerAdress) {
+        this.providerAdress = providerAdress;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public void setSocialCapital(String socialCapital) {
+        this.socialCapital = socialCapital;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setProviderCUI(String providerCUI) {
+        this.providerCUI = providerCUI;
     }
 
-    public List<Item> getItemList() {
-        return itemList;
+    public void setLegalForm(String legalForm) {
+        this.legalForm = legalForm;
+    }
+
+    public void setBeneficiaryName(String beneficiaryName) {
+        this.beneficiaryName = beneficiaryName;
+    }
+
+    public void setBeneficiaryAdress(String beneficiaryAdress) {
+        this.beneficiaryAdress = beneficiaryAdress;
+    }
+
+    public void setBeneficiaryCUI(String beneficiaryCUI) {
+        this.beneficiaryCUI = beneficiaryCUI;
     }
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
     }
 
-    //to attach Items to the invoice's item list
-    public void setItem(Item item) {
+    //Method to attach ItemDTO's to the Item List
+    public void setItem(Item item){
         this.itemList.add(item);
         item.setInvoice(this);
     }
 
-    //OPTIONAL - for further development: to delete items from the list from the invoice
-    public void deleteItem(Item item) {
-        this.itemList.remove(item);
-        item.setInvoice(null);
+    public void setTotalPriceNoVAT(double totalPriceNoVAT) {
+        this.totalPriceNoVAT = totalPriceNoVAT;
     }
 
-    public int getPriceWithVAT() {
-        return priceWithVAT;
+    public void setTotalPriceWithVAT(double totalPriceWithVAT) {
+        this.totalPriceWithVAT = totalPriceWithVAT;
     }
 
-    public void setPriceWithVAT(int priceWithVAT) {
-        this.priceWithVAT = priceWithVAT;
+    //Getter methods
+    public Long getInvoiceId() {
+        return invoiceId;
     }
 
-    public int getPriceWithoutVAT() {
-        return priceWithoutVAT;
+    public String getDate() {
+        return date;
     }
 
-    public void setPriceWithoutVAT(int priceWithoutVAT) {
-        this.priceWithoutVAT = priceWithoutVAT;
+    public String getProviderName() {
+        return providerName;
     }
 
+    public String getProviderAdress() {
+        return providerAdress;
+    }
+
+    public String getRegistrationCode() {
+        return registrationCode;
+    }
+
+    public String getSocialCapital() {
+        return socialCapital;
+    }
+
+    public String getProviderCUI() {
+        return providerCUI;
+    }
+
+    public String getLegalForm() {
+        return legalForm;
+    }
+
+    public String getBeneficiaryName() {
+        return beneficiaryName;
+    }
+
+    public String getBeneficiaryAdress() {
+        return beneficiaryAdress;
+    }
+
+    public String getBeneficiaryCUI() {
+        return beneficiaryCUI;
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public double getTotalPriceNoVAT() {
+        return totalPriceNoVAT;
+    }
+
+    public double getTotalPriceWithVAT() {
+        return totalPriceWithVAT;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "invoiceId=" + invoiceId +
+                ", date='" + date + '\'' +
+                ", providerName='" + providerName + '\'' +
+                ", providerAdress='" + providerAdress + '\'' +
+                ", registrationCode='" + registrationCode + '\'' +
+                ", socialCapital='" + socialCapital + '\'' +
+                ", providerCUI='" + providerCUI + '\'' +
+                ", legalForm='" + legalForm + '\'' +
+                ", beneficiaryName='" + beneficiaryName + '\'' +
+                ", beneficiaryAdress='" + beneficiaryAdress + '\'' +
+                ", beneficiaryCUI='" + beneficiaryCUI + '\'' +
+                ", itemList=" + itemList +
+                ", totalPriceNoVAT=" + totalPriceNoVAT +
+                ", totalPriceWithVAT=" + totalPriceWithVAT +
+                '}';
+    }
 }

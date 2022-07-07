@@ -1,25 +1,38 @@
 package invoicemanagementsystem.entities.dto;
 
-import invoicemanagementsystem.entities.ItemInfo;
-
-
 public class ItemDTO {
+
+    //Details for each purchased item
     private String itemName;
-    private ItemInfoDTO itemInfo;
+    private double itemQuantity;
+    private double applicableVAT;
+    private double pricePerUnitNoVAT;
+
+    //Getter methods to map the actual entity
 
     public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public double getItemQuantity() {
+        return itemQuantity;
     }
 
-    public ItemInfoDTO getItemInfo() {
-        return itemInfo;
+    public double getApplicableVAT() {
+        return applicableVAT;
     }
 
-    public void setItemInfo(ItemInfoDTO itemInfo) {
-        this.itemInfo = itemInfo;
+    public double getPricePerUnitNoVAT() {
+        return pricePerUnitNoVAT;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "itemName='" + itemName + '\'' +
+                ", itemQuantity=" + itemQuantity +
+                ", applicableVAT=" + applicableVAT +
+                ", pricePerUnitNoVAT=" + pricePerUnitNoVAT +
+                '}';
     }
 }

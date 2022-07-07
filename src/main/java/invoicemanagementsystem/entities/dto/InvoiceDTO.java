@@ -1,51 +1,89 @@
 package invoicemanagementsystem.entities.dto;
-import invoicemanagementsystem.entities.Item;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InvoiceDTO {
-    private String name;
-    private String receiverName;
+
+    //Two parties: the provider & the beneficiary
+    private String date;
+
+    //PROVIDER INFO
+    private String providerName;
+    private String providerAdress;
+    private String registrationCode;
+    private String socialCapital;
+    private String providerCUI;
+    private String legalForm;
+
+    //BENEFICIARY INFO
+    private String beneficiaryName;
+    private String beneficiaryAdress;
+    private String beneficiaryCUI;
+
+    //The list of purchased items
     private List<ItemDTO> itemList;
-    private int priceWithVAT;
-    private int priceWithoutVAT;
 
-    public String getName() {
-        return name;
+    //Getter methods to map the actual entity
+
+    public String getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProviderName() {
+        return providerName;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public String getProviderAdress() {
+        return providerAdress;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public String getRegistrationCode() {
+        return registrationCode;
+    }
+
+    public String getSocialCapital() {
+        return socialCapital;
+    }
+
+    public String getProviderCUI() {
+        return providerCUI;
+    }
+
+    public String getLegalForm() {
+        return legalForm;
+    }
+
+    public String getBeneficiaryName() {
+        return beneficiaryName;
+    }
+
+    public String getBeneficiaryAdress() {
+        return beneficiaryAdress;
+    }
+
+    public String getBeneficiaryCUI() {
+        return beneficiaryCUI;
     }
 
     public List<ItemDTO> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<ItemDTO> itemList) {
-        this.itemList = itemList;
-    }
-
-    public int getPriceWithVAT() {
-        return priceWithVAT;
-    }
-
-    public void setPriceWithVAT(int priceWithVAT) {
-        this.priceWithVAT = priceWithVAT;
-    }
-
-    public int getPriceWithoutVAT() {
-        return priceWithoutVAT;
-    }
-
-    public void setPriceWithoutVAT(int priceWithoutVAT) {
-        this.priceWithoutVAT = priceWithoutVAT;
+    @Override
+    public String toString() {
+        List<ItemDTO> lista = itemList.stream().map(itemDTO -> {return itemDTO;}).collect(Collectors.toList());
+        return "InvoiceDTO{" +
+                "date='" + date + '\'' +
+                ", providerName='" + providerName + '\'' +
+                ", providerAdress='" + providerAdress + '\'' +
+                ", registrationCode='" + registrationCode + '\'' +
+                ", socialCapital='" + socialCapital + '\'' +
+                ", CUI='" + providerCUI + '\'' +
+                ", legalForm='" + legalForm + '\'' +
+                ", beneficiaryName='" + beneficiaryName + '\'' +
+                ", beneficiaryAdress='" + beneficiaryAdress + '\'' +
+                ", beneficiaryCUI='" + beneficiaryCUI + '\'' +
+                ", itemList=" + lista +
+                '}';
     }
 }
