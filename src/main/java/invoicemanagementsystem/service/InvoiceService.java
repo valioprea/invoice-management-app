@@ -1,12 +1,9 @@
 package invoicemanagementsystem.service;
-
 import invoicemanagementsystem.entities.Invoice;
 import invoicemanagementsystem.entities.Item;
 import invoicemanagementsystem.entities.dto.InvoiceDTO;
 import invoicemanagementsystem.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

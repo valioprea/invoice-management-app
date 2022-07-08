@@ -1,24 +1,17 @@
-<!doctype html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/styles.css}">
+    <link rel="stylesheet" href="http://localhost:8080/styles.css"/>
 </head>
 <body>
 
 <page size="A4">
-
-    <h1>Hello, world!</h1>
-    <h1 th:text="${something}"></h1>
-
-
     <div class="container">
         <div class="row">
             <div class="col-sm text-center" align="center">
-                <img th:src="@{/ferendia.png}" alt="No img available">
+                <img th:src="@{classpath:static/ferendia.png}" alt="No img available"/>
             </div>
             <div class="col-sm text-center">
                 THIS MUST BE EMPTY
@@ -30,33 +23,33 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="flex-container">
             <!--  Furnizor          -->
             <div class="col-sm">
                 <div>DATE FURNIZOR</div>
                 <div>
                     <span>Furnizor: </span>
-                    <span>BNG Ferendia</span>
+                    <span th:text="${providerName}"></span>
                 </div>
                 <div>
                     <span>Adresa: </span>
-                    <span>Resita Strada Principala</span>
+                    <span th:text="${providerAdress}"></span>
                 </div>
                 <div>
                     <span>Cod Inregistrare/ CUI: </span>
-                    <span>42452</span>
+                    <span th:text="${registrationCode}"></span>
                 </div>
                 <div>
                     <span>Capital Social: </span>
-                    <span>631318381</span>
+                    <span th:text="${socialCapital}"></span>
                 </div>
                 <div>
                     <span>Nr. Registrul Comertului: </span>
-                    <span>123153</span>
+                    <span th:text="${providerCUI}"></span>
                 </div>
                 <div>
                     <span>Forma Juridica: </span>
-                    <span>SRL</span>
+                    <span th:text="${legalForm}"></span>
                 </div>
             </div>
 
@@ -65,11 +58,11 @@
                 <div>DATE FACTURA</div>
                 <div>
                     <span>Nr. Inregistrare/ id: </span>
-                    <span>34</span>
+                    <span th:text="${invoiceId}"></span>
                 </div>
                 <div>
                     <span>Data: </span>
-                    <span>12/12/1212</span>
+                    <span th:text="${date}"></span>
                 </div>
             </div>
 
@@ -78,31 +71,60 @@
                 <div>DATE BENEFICIAR</div>
                 <div>
                     <span>Beneficiar: </span>
-                    <span>John Doe</span>
+                    <span th:text="${beneficiaryName}"></span>
                 </div>
                 <div>
                     <span>Adresa: </span>
-                    <span>Middle Earth</span>
+                    <span th:text="${beneficiaryAdress}"></span>
                 </div>
                 <div>
                     <span>Cod Inregistrare / CUI: </span>
-                    <span>999999999</span>
+                    <span th:text="${beneficiaryCUI}"></span>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container">
+        <table class="table table-bordered" id="customers">
+            <thead>
+            <tr>
+                <th scope="col">Nr. Crt.</th>
+                <th scope="col">Denumire Item</th>
+                <th scope="col">Cantitate</th>
+                <th scope="col">Pret unitar fara TVA</th>
+                <th scope="col">Pret total fara TVA</th>
+                <th scope="col">Valoare TVA</th>
+                <th scope="col">Pret unitar cu TVA</th>
+                <th scope="col">Pret total cu TVA</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item: ${itemList}">
+                <td th:text="${itemStat.index+1}"></td>
+                <td th:text="${item.getItemName()}"></td>
+                <td th:text="${item.getItemQuantity()}"></td>
+                <td th:text="${item.getPricePerUnitNoVAT()}"></td>
+                <td th:text="${item.getPricePerQuantityNoVAT()}"></td>
+                <td th:text="${item.getApplicableVAT()}"></td>
+                <td th:text="${item.getPricePerUnitWithVAT()}"></td>
+                <td th:text="${item.getPricePerQuantityWithVAT()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
+    <div class="container">
+        <div>TOTAL COSTURI</div>
+        <div>
+            <span>Pret total fara TVA: </span>
+            <span th:text="${totalPriceWithoutVAT}"></span>
+        </div>
+        <div>
+            <span>Pret total cu TVA: </span>
+            <span th:text="${totalPriceWithVAT}"></span>
+        </div>
+    </div>
 </page>
-
-
-
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

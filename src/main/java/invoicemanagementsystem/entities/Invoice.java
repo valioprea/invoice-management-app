@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "invoice")
@@ -160,6 +161,7 @@ public class Invoice {
 
     @Override
     public String toString() {
+        List<Item> lista = itemList.stream().map(item -> {return item;}).collect(Collectors.toList());
         return "Invoice{" +
                 "invoiceId=" + invoiceId +
                 ", date='" + date + '\'' +
@@ -172,7 +174,7 @@ public class Invoice {
                 ", beneficiaryName='" + beneficiaryName + '\'' +
                 ", beneficiaryAdress='" + beneficiaryAdress + '\'' +
                 ", beneficiaryCUI='" + beneficiaryCUI + '\'' +
-//                ", itemList=" + itemList +
+                ", itemList=" + lista +
                 ", totalPriceNoVAT=" + totalPriceNoVAT +
                 ", totalPriceWithVAT=" + totalPriceWithVAT +
                 '}';
