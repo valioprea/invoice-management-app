@@ -28,6 +28,11 @@ public class Item {
     private double pricePerQuantityNoVAT;
     private double pricePerQuantityWithVAT;
 
+    //Additional resulted values for calculation values, to round them up to two decimals
+    private double pricePerUnitWithVAT_ROUNDED;
+    private double pricePerQuantityNoVAT_ROUNDED;
+    private double pricePerQuantityWithVAT_ROUNDED;
+
     //Setter Methods
     public void setItemId(Long itemId) {
         this.itemId = itemId;
@@ -65,6 +70,21 @@ public class Item {
         this.pricePerQuantityWithVAT = this.itemQuantity*pricePerUnitWithVAT;
     }
 
+
+
+    //Additional SETTER Methods for calculated values, to round them up to two decimals
+    public void setPricePerUnitWithVAT_ROUNDED(double pricePerUnitWithVAT){
+        this.pricePerUnitWithVAT_ROUNDED = pricePerUnitWithVAT;
+    }
+    public void setPricePerQuantityNoVAT_ROUNDED(double pricePerQuantityNoVAT){
+        this.pricePerQuantityNoVAT_ROUNDED = pricePerQuantityNoVAT;
+    }
+    public void setPricePerQuantityWithVAT_ROUNDED(double pricePerQuantityWithVAT){
+        this.pricePerQuantityWithVAT_ROUNDED = pricePerQuantityWithVAT;
+    }
+
+
+
     //Getter methods
     public double getPricePerQuantityNoVAT() {
         return pricePerQuantityNoVAT;
@@ -100,6 +120,19 @@ public class Item {
 
     public double getPricePerUnitWithVAT() {
         return pricePerUnitWithVAT;
+    }
+
+    //Additional getter methods for rounded values
+    public double getPricePerUnitWithVAT_ROUNDED() {
+        return pricePerUnitWithVAT_ROUNDED;
+    }
+
+    public double getPricePerQuantityNoVAT_ROUNDED() {
+        return pricePerQuantityNoVAT_ROUNDED;
+    }
+
+    public double getPricePerQuantityWithVAT_ROUNDED() {
+        return pricePerQuantityWithVAT_ROUNDED;
     }
 
     @Override

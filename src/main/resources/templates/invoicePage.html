@@ -4,86 +4,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Bootstrap demo</title>
     <link rel="stylesheet" href="http://localhost:8080/styles.css"/>
+
 </head>
 <body>
 
 <page size="A4">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm text-center" align="center">
-                <img th:src="@{classpath:static/ferendia.png}" alt="No img available"/>
-            </div>
-            <div class="col-sm text-center">
-                THIS MUST BE EMPTY
-            </div>
-            <div class="col-sm text-center">
-                <h1>FACTURA FISCALA</h1>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
-        <div class="flex-container">
-            <!--  Furnizor          -->
-            <div class="col-sm">
-                <div>DATE FURNIZOR</div>
+    <table>
+        <tr>
+            <th>
                 <div>
-                    <span>Furnizor: </span>
-                    <span th:text="${providerName}"></span>
+                    <img th:src="@{classpath:static/ferendia.png}" alt="No img available"/>
                 </div>
-                <div>
-                    <span>Adresa: </span>
-                    <span th:text="${providerAdress}"></span>
+            </th>
+            <th>
+                <div class="col-sm text-center">
                 </div>
-                <div>
-                    <span>Cod Inregistrare/ CUI: </span>
-                    <span th:text="${registrationCode}"></span>
+            </th>
+            <th>
+                <div id="facturaFiscala">
+                    <h1>FACTURA FISCALA</h1>
                 </div>
-                <div>
-                    <span>Capital Social: </span>
-                    <span th:text="${socialCapital}"></span>
-                </div>
-                <div>
-                    <span>Nr. Registrul Comertului: </span>
-                    <span th:text="${providerCUI}"></span>
-                </div>
-                <div>
-                    <span>Forma Juridica: </span>
-                    <span th:text="${legalForm}"></span>
-                </div>
-            </div>
+            </th>
+        </tr>
+    </table>
 
-            <!-- Date Factura           -->
-            <div class="col-sm">
-                <div>DATE FACTURA</div>
-                <div>
-                    <span>Nr. Inregistrare/ id: </span>
-                    <span th:text="${invoiceId}"></span>
-                </div>
-                <div>
-                    <span>Data: </span>
-                    <span th:text="${date}"></span>
-                </div>
-            </div>
 
-            <!--  Date Beneficiar            -->
-            <div class="col-sm">
-                <div>DATE BENEFICIAR</div>
-                <div>
-                    <span>Beneficiar: </span>
-                    <span th:text="${beneficiaryName}"></span>
+
+    <table>
+        <tr>
+            <th>
+                <!--  Furnizor          -->
+                <div id="dateFurnizor">
+                    <div>DATE FURNIZOR</div>
+                    <div>
+                        <span>Furnizor: </span>
+                        <span th:text="${providerName}"></span>
+                    </div>
+                    <div>
+                        <span>Adresa: </span>
+                        <span th:text="${providerAdress}"></span>
+                    </div>
+                    <div>
+                        <span>Cod Inregistrare/ CUI: </span>
+                        <span th:text="${registrationCode}"></span>
+                    </div>
+                    <div>
+                        <span>Capital Social: </span>
+                        <span th:text="${socialCapital}"></span>
+                    </div>
+                    <div>
+                        <span>Nr. Registrul Comertului: </span>
+                        <span th:text="${providerCUI}"></span>
+                    </div>
+                    <div>
+                        <span>Forma Juridica: </span>
+                        <span th:text="${legalForm}"></span>
+                    </div>
                 </div>
-                <div>
-                    <span>Adresa: </span>
-                    <span th:text="${beneficiaryAdress}"></span>
+            </th>
+            <th>
+                <!-- Date Factura           -->
+                <div id="dateFactura">
+                    <div>DATE FACTURA</div>
+                    <div>
+                        <span>Nr. Inregistrare/ id: </span>
+                        <span th:text="${invoiceId}"></span>
+                    </div>
+                    <div>
+                        <span>Data: </span>
+                        <span th:text="${date}"></span>
+                    </div>
                 </div>
-                <div>
-                    <span>Cod Inregistrare / CUI: </span>
-                    <span th:text="${beneficiaryCUI}"></span>
+            </th>
+            <th>
+                <!--  Date Beneficiar            -->
+                <div id="dateBeneficiar">
+                    <div>DATE BENEFICIAR</div>
+                    <div>
+                        <span>Beneficiar: </span>
+                        <span th:text="${beneficiaryName}"></span>
+                    </div>
+                    <div>
+                        <span>Adresa: </span>
+                        <span th:text="${beneficiaryAdress}"></span>
+                    </div>
+                    <div>
+                        <span>Cod Inregistrare / CUI: </span>
+                        <span th:text="${beneficiaryCUI}"></span>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </th>
+        </tr>
+    </table>
 
     <div class="container">
         <table class="table table-bordered" id="customers">
@@ -105,24 +118,25 @@
                 <td th:text="${item.getItemName()}"></td>
                 <td th:text="${item.getItemQuantity()}"></td>
                 <td th:text="${item.getPricePerUnitNoVAT()}"></td>
-                <td th:text="${item.getPricePerQuantityNoVAT()}"></td>
+                <td th:text="${item.getPricePerQuantityNoVAT_ROUNDED()}"></td>
                 <td th:text="${item.getApplicableVAT()}"></td>
-                <td th:text="${item.getPricePerUnitWithVAT()}"></td>
-                <td th:text="${item.getPricePerQuantityWithVAT()}"></td>
+                <td th:text="${item.getPricePerUnitWithVAT_ROUNDED()}"></td>
+                <td th:text="${item.getPricePerQuantityWithVAT_ROUNDED()}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div class="container">
-        <div>TOTAL COSTURI</div>
-        <div>
+
+    <div>
+        <div class="lastInfo">TOTAL COSTURI</div>
+        <div class="lastInfo">
             <span>Pret total fara TVA: </span>
-            <span th:text="${totalPriceWithoutVAT}"></span>
+            <span th:text="${totalPriceWithoutVAT+' lei'}"></span>
         </div>
-        <div>
+        <div class="lastInfo">
             <span>Pret total cu TVA: </span>
-            <span th:text="${totalPriceWithVAT}"></span>
+            <span th:text="${totalPriceWithVAT+' lei'}"></span>
         </div>
     </div>
 </page>

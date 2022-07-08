@@ -26,17 +26,38 @@ img {
   border: 1px solid #ddd;
   padding: 8px;
 }
-#customers tr:nth-child(even){background-color: #F2F2F2;}
-#customers tr:hover {background-color: #ddd;}
+#customers tr:nth-child(even){background-color: #a4abac;}
 #customers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #f058a0;
   color: white;
 }
 
- .flex-container{
-           display:flex;
-            justify-content:space-between;
-            }
+/* Here begin my own markups */
+#dateFurnizor {
+    text-align: left;
+    border: 1px solid black;
+    margin: 3px solid blue;
+}
+
+#dateFactura {
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#dateBeneficiar {
+    text-align: right;
+    border: 1px solid black;
+}
+
+#facturaFiscala {
+    text-align: right;
+}
+
+.lastInfo {
+    padding: 4px;
+}

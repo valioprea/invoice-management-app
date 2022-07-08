@@ -1,12 +1,18 @@
 package invoicemanagementsystem.service;
 import invoicemanagementsystem.entities.Invoice;
+import invoicemanagementsystem.entities.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class InjectInfoService {
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     @Autowired
     InvoiceService invoiceService;
 
@@ -32,12 +38,35 @@ public class InjectInfoService {
         infoInjection.put("beneficiaryCUI", myInvoice.getBeneficiaryCUI());
 
         //attributes to inject - the item list
-        infoInjection.put("itemList", myInvoice.getItemList());
+        List<Item> formattedList = myInvoice.getItemList()
+                        .stream().map(item -> {
+                            Item formattedItem = new Item();
+                            formattedItem.setItemName(item.getItemName());
+                            formattedItem.setItemQuantity(InjectInfoService.round(item.getItemQuantity(),2));
+                            formattedItem.setApplicableVAT(InjectInfoService.round(item.getApplicableVAT(),2));
+                            formattedItem.setPricePerUnitNoVAT(InjectInfoService.round(item.getPricePerUnitNoVAT(),2));
+                            formattedItem.setPricePerUnitWithVAT();
+                            formattedItem.setPricePerQuantityNoVAT();
+                            formattedItem.setPricePerQuantityWithVAT();
+                            formattedItem.setPricePerUnitWithVAT_ROUNDED(InjectInfoService.round(item.getPricePerUnitWithVAT(),2));
+                            formattedItem.setPricePerQuantityNoVAT_ROUNDED(InjectInfoService.round(item.getPricePerQuantityNoVAT(),2));
+                            formattedItem.setPricePerQuantityWithVAT_ROUNDED(InjectInfoService.round(item.getPricePerQuantityWithVAT(),2));
+                            return formattedItem;
+                }).collect(Collectors.toList());
+        infoInjection.put("itemList", formattedList);
 
         //attributes to inject - the total costs
-        infoInjection.put("totalPriceWithoutVAT", myInvoice.getTotalPriceNoVAT());
-        infoInjection.put("totalPriceWithVAT", myInvoice.getTotalPriceWithVAT());
+        infoInjection.put("totalPriceWithoutVAT", df.format(myInvoice.getTotalPriceNoVAT()));
+        infoInjection.put("totalPriceWithVAT", df.format(myInvoice.getTotalPriceWithVAT()));
 
         return  infoInjection;
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }
