@@ -8,108 +8,109 @@
 </head>
 <body>
 
-<page size="A4">
+<page>
 
-    <table>
+
+
+    <table id="firstTable">
         <tr>
-            <th>
+            <th class="colTab1">
                 <div>
                     <img th:src="@{classpath:static/ferendia.png}" alt="No img available"/>
                 </div>
             </th>
-            <th>
-                <div class="col-sm text-center">
-                </div>
+            <th class="colTab1">
+                <div></div>
             </th>
-            <th>
-                <div id="facturaFiscala">
-                    <h1>FACTURA FISCALA</h1>
-                </div>
+            <th class="colTab1">
+                <div id="col3Tab1">FACTURA FISCALA</div>
             </th>
         </tr>
     </table>
 
 
 
-    <table>
+    <table  id="secondTable">
         <tr>
-            <th>
-                <!--  Furnizor          -->
-                <div id="dateFurnizor">
-                    <div>DATE FURNIZOR</div>
+            <!--  Furnizor          -->
+            <th class="colTab2" id="col1Tab2">
+                <div align="left">
+                    <div class="tab2titles">DATE FURNIZOR</div>
                     <div>
-                        <span>Furnizor: </span>
-                        <span th:text="${providerName}"></span>
+                        <span class="tab2keys">Furnizor: </span>
+                        <span th:text="${providerName}"  class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Adresa: </span>
-                        <span th:text="${providerAdress}"></span>
+                        <span class="tab2keys">Adresa: </span>
+                        <span th:text="${providerAdress}"  class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Cod Inregistrare/ CUI: </span>
-                        <span th:text="${registrationCode}"></span>
+                        <span class="tab2keys">Cod Inregistrare/ CUI: </span>
+                        <span th:text="${registrationCode}"  class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Capital Social: </span>
-                        <span th:text="${socialCapital}"></span>
+                        <span class="tab2keys">Capital Social: </span>
+                        <span th:text="${socialCapital}"  class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Nr. Registrul Comertului: </span>
-                        <span th:text="${providerCUI}"></span>
+                        <span class="tab2keys">Nr. Registrul Comertului: </span>
+                        <span th:text="${providerCUI}"  class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Forma Juridica: </span>
-                        <span th:text="${legalForm}"></span>
-                    </div>
-                </div>
-            </th>
-            <th>
-                <!-- Date Factura           -->
-                <div id="dateFactura">
-                    <div>DATE FACTURA</div>
-                    <div>
-                        <span>Nr. Inregistrare/ id: </span>
-                        <span th:text="${invoiceId}"></span>
-                    </div>
-                    <div>
-                        <span>Data: </span>
-                        <span th:text="${date}"></span>
+                        <span class="tab2keys">Forma Juridica: </span>
+                        <span th:text="${legalForm}"  class="tab2values"></span>
                     </div>
                 </div>
             </th>
-            <th>
-                <!--  Date Beneficiar            -->
-                <div id="dateBeneficiar">
-                    <div>DATE BENEFICIAR</div>
+            <!-- Date Factura           -->
+            <th class="colTab2" id="col2Tab2">
+                <div align="center">
+                    <div class="tab2titles">DATE FACTURA</div>
                     <div>
-                        <span>Beneficiar: </span>
-                        <span th:text="${beneficiaryName}"></span>
+                        <span class="tab2keys">Nr. Inregistrare/ id: </span>
+                        <span th:text="${invoiceId}" class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Adresa: </span>
-                        <span th:text="${beneficiaryAdress}"></span>
+                        <span class="tab2keys">Data: </span>
+                        <span th:text="${date}" class="tab2values"></span>
+                    </div>
+                </div>
+            </th>
+            <!--  Date Beneficiar            -->
+            <th class="colTab2" align="right" id="col3Tab2">
+                <div>
+                    <div class="tab2titles">DATE BENEFICIAR</div>
+                    <div>
+                        <span class="tab2keys">Beneficiar: </span>
+                        <span th:text="${beneficiaryName}" class="tab2values"></span>
                     </div>
                     <div>
-                        <span>Cod Inregistrare / CUI: </span>
-                        <span th:text="${beneficiaryCUI}"></span>
+                        <span class="tab2keys">Adresa: </span>
+                        <span th:text="${beneficiaryAdress}" class="tab2values"></span>
+                    </div>
+                    <div>
+                        <span class="tab2keys">Cod Inregistrare / CUI: </span>
+                        <span th:text="${beneficiaryCUI}" class="tab2values"></span>
                     </div>
                 </div>
             </th>
         </tr>
     </table>
 
-    <div class="container">
-        <table class="table table-bordered" id="customers">
+
+
+    <div id="containerThirdTable">
+        <table id="thirdTable">
             <thead>
             <tr>
-                <th scope="col">Nr. Crt.</th>
-                <th scope="col">Denumire Item</th>
-                <th scope="col">Cantitate</th>
-                <th scope="col">Pret unitar fara TVA</th>
-                <th scope="col">Pret total fara TVA</th>
-                <th scope="col">Valoare TVA</th>
-                <th scope="col">Pret unitar cu TVA</th>
-                <th scope="col">Pret total cu TVA</th>
+                <th>Nr. Crt.</th>
+                <th>Denumire Item</th>
+                <th>Cantitate</th>
+                <th>Pret unitar fara TVA</th>
+                <th>Pret total fara TVA</th>
+                <th>Valoare TVA</th>
+                <th>Pret unitar cu TVA</th>
+                <th>Pret total cu TVA</th>
             </tr>
             </thead>
             <tbody>
@@ -128,17 +129,19 @@
     </div>
 
 
-    <div>
-        <div class="lastInfo">TOTAL COSTURI</div>
-        <div class="lastInfo">
-            <span>Pret total fara TVA: </span>
+    <div class="totals">
+        <div id="totalCosturi">TOTAL COSTURI</div>
+        <div style="padding-bottom: 10px">
+            <span class="totalCosturiKey">Pret total fara TVA: </span>
             <span th:text="${totalPriceWithoutVAT+' lei'}"></span>
         </div>
-        <div class="lastInfo">
-            <span>Pret total cu TVA: </span>
+        <div>
+            <span class="totalCosturiKey">Pret total cu TVA: </span>
             <span th:text="${totalPriceWithVAT+' lei'}"></span>
         </div>
     </div>
+
+
 </page>
 </body>
 </html>
