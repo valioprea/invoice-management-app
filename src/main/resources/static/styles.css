@@ -1,0 +1,163 @@
+html * {
+font-family: Arial !important;
+}
+
+page {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  width: 21cm;
+  height: 29.7cm;
+}
+
+/*DE AICI INCEPE PRIMUL TABEL*/
+#firstTable {
+width: 100%;
+border: none;
+border-collapse: collapse;
+}
+
+#firstTable tr {
+height: 150px;
+}
+
+#firstTable th {
+border: none;
+border-collapse: collapse;
+}
+
+.colTab1 {
+width: 33%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+#col3Tab1 {
+padding: 30px;
+text-align: right;
+font-family: Arial;
+font-size: 170%;
+}
+
+/*PANA AICI A FOST PRIMUL TABEL*/
+
+/*DE AICI INCEPE AL DOILEA TABEL*/
+#containerThirdTable {
+padding: 10px;
+}
+
+#secondTable {
+width: 100%;
+border: none;
+border-collapse: collapse;
+}
+
+#secondTable tr {
+height: 200px;
+}
+
+#secondTable th {
+border: none;
+border-collapse: collapse;
+}
+
+.colTab2 {
+width: 33%;
+}
+
+#col1Tab2 {
+padding: 10px;
+vertical-align: top;
+}
+
+#col3Tab2 {
+padding: 10px;
+vertical-align: top;
+}
+
+#col2Tab2 {
+padding: 10px;
+vertical-align: top;
+}
+
+.tab2titles {
+color:#f058a0;
+font-weight: bold;
+padding: 5px;
+text-align: center;
+font-family: Arial;
+font-size: 100%;
+}
+
+.tab2keys {
+font-weight: bold;
+font-size: 16px;
+}
+
+.tab2values {
+font-weight: normal;
+font-size: 15px;
+}
+/*PANA AICI A FOST AL DOILEA TABEL*/
+
+/*DE AICI INCEPE AL TREILEA TABEL*/
+#thirdTable{
+width: 100%;
+border: 1px solid black;
+border-collapse: collapse;
+font-family: Arial;
+}
+
+#thirdTable tr {
+height: 40px;
+}
+
+#thirdTable tr:nth-child(even){
+background-color: #e4eeed;
+}
+
+#thirdTable th {
+border: 1px solid black;
+border-collapse: collapse;
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: center;
+background-color: #f058a0;
+color: white;
+font-weight: bold;
+font-size: 16 px;
+height: 50px;
+}
+
+#thirdTable td, #thirdTable th {
+border: 1px solid black;
+padding: 2px;
+text-align: center;
+font-size: 14px;
+}
+/*PANA AICI A FOST AL TREILEA TABEL*/
+
+/*DE AICI INCEPE TOTALUL*/
+.totals {
+padding: 10px;
+}
+
+#totalCosturi {
+font-weight: bold;
+text-decoration: underline;
+padding-bottom: 10px;
+color:#f058a0;
+}
+
+.totalCosturiKey {
+padding: 10px;
+font-weight: bold;
+}

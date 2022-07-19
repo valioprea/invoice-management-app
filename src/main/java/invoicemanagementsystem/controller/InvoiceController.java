@@ -22,9 +22,8 @@ public class InvoiceController {
 
     //Save an invoice
     @PostMapping("/invoice")
-    Invoice saveInvoice(@RequestBody InvoiceDTO invoice) {
-        return service.storeInvoice(invoice);
-    }
+    Invoice saveInvoice(@RequestBody InvoiceDTO invoice) {return service.storeInvoice(invoice);};
+
 
     //Show invoice by Id
     @GetMapping("/invoice/{id}")
